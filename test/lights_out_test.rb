@@ -17,7 +17,7 @@ class LightsOutTest < MiniTest::Test
     define_method "test_solution_to_#{board}" do
       timeout 20 do
         solution = `#{ENV["LANGUAGE_PATH"]}/lights_out #{board}`
-        assert_equal "000\n000\n000", `./runner.rb #{board} #{solution}`.strip
+        assert_equal "000\n000\n000", `./board.rb #{board} #{solution}`.strip
       end
     end
 

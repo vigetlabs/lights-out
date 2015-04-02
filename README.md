@@ -9,7 +9,7 @@ For example:
 
 <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/LightsOutIllustration.svg/1460px-LightsOutIllustration.svg.png" />
 
-We'll be using a 3x3 grid instead of 5x5. I've created a program in the project's root, `runner.rb`. It takes two arguments:
+We'll be using a 3x3 grid instead of 5x5. I've created a program in the project's root, `board.rb`. It takes two arguments:
 
 1. An initial board state, expressed as nine ones (for on) and zeroes (for off). The first three characters represent the top row, the middle three the middle row, and the last three the last row. So for example, a board state of `010101011` would represent the following state:
 
@@ -19,21 +19,21 @@ We'll be using a 3x3 grid instead of 5x5. I've created a program in the project'
 
 2. A optional series of button presses, expressed as digits 1-9, where 1 corresponds to the top left, 3 to the top right, 9 to the bottom right (like a phone).
 
-So calls to `runner.rb` will look something like this:
+So calls to `board.rb` will look something like this:
 
-    > ./runner.rb 010111010
+    > ./board.rb 010111010
     010
     111
     010
-    > ./runner.rb 010111010 7
+    > ./board.rb 010111010 7
     010
     011
     100
-    > ./runner.rb 010111010 73
+    > ./board.rb 010111010 73
     001
     010
     100
-    > ./runner.rb 010111010 5
+    > ./board.rb 010111010 5
     000
     000
     000
