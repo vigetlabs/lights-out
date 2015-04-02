@@ -11,15 +11,15 @@ For example:
 
 We'll be using a 3x3 grid instead of 5x5. I've created a program in the project's root, `runner.rb`. It takes two arguments:
 
-1. An initial board state, expressed as nine ones (for on) and zeroes (for off). The first three characters represent the top row, the middle three the middle row, and the last three the last row. So for example, a board state of `010101011` would correspond with
+1. An initial board state, expressed as nine ones (for on) and zeroes (for off). The first three characters represent the top row, the middle three the middle row, and the last three the last row. So for example, a board state of `010101011` would represent the following state:
 
-    010
-    101
-    011
+        010
+        101
+        011
 
 2. A optional series of button presses, expressed as digits 1-9, where 1 corresponds to the top left, 3 to the top right, 9 to the bottom right (like a phone).
 
-So a calls to `runner.rb` will look something like this:
+So calls to `runner.rb` will look something like this:
 
     > ./runner.rb 010111010
     010
@@ -38,14 +38,14 @@ So a calls to `runner.rb` will look something like this:
     000
     000
 
-**The challenge** is to create a program in your language or languages of choice called `lights_out` that takes an initial board state and returns an efficient series of moves to turn all the lights off. Example usage:
+**The challenge** is to create a program in your language or languages of choice called `lights_out` that takes an initial board state and returns an efficient series of moves to turn all the lights off. For example:
 
     > ./lights_out 0000000000
     
     > ./lights_out 010111010
     5
     > ./lights_out 110001101
-    719
+    179
 
 To start:
 
