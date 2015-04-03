@@ -15,14 +15,14 @@ class LightsOutTest < MiniTest::Test
 
   CASES.each do |board, moves|
     define_method "test_solution_to_#{board}" do
-      timeout 20 do
+      timeout (ENV["TIMEOUT"] || 5).to_i do
         solution = `#{ENV["LANGUAGE_PATH"]}/lights_out #{board}`
         assert_equal "000\n000\n000", `./board.rb #{board} #{solution}`.strip
       end
     end
 
     define_method "test_length_of_solution_to_#{board}" do
-      timeout 20 do
+      timeout (ENV["TIMEOUT"] || 5).to_i do
         solution = `#{ENV["LANGUAGE_PATH"]}/lights_out #{board}`.strip
         assert solution.length <= moves,
           "Solution to #{board} (#{solution}) longer than #{moves}"
