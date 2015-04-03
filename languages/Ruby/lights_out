@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-masks = [
+MASKS = [
   nil,
   0b110_100_000,
   0b111_010_000,
@@ -13,19 +13,13 @@ masks = [
   0b000_001_011
 ]
 
-states = [[ARGV[0].to_i(2), []]]
+board = ARGV[0].to_i(2)
 
-loop do
-  board, path = states.shift
-
- if board == 0
-   puts path.join
-   break
- end
-
-  (1..9).each do |move|
-    unless path.include?(move)
-      states << [board ^ masks[move], path + [move]]
+0.upto(9) do |length|
+  (1..9).to_a.combination(length) do |moves|
+    if moves.map { |m| MASKS[m] }.reduce(board, :^).zero?
+      puts moves.join
+      exit
     end
   end
 end
