@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+require("babel/polyfill")
+
 const masks = [
   null,
   0b110100000,
@@ -19,12 +21,10 @@ let combinations = function(length) {
   if (length == 0) {
     return [[]] 
   } else {
-    let collection = [],
-        combos     = combinations(length - 1)
+    let collection = []
 
-    for (let i = 0; i < combos.length; i++) {
-      let combo = combos[i],
-          last  = combo.slice(-1)[0] || 0
+    for (let combo of combinations(length - 1)) {
+      let last = combo.reverse()[0] || 0
 
       for (let move = last + 1; move < 10; move++) {
         collection.push(combo.concat(move))
@@ -36,11 +36,7 @@ let combinations = function(length) {
 }
 
 for (let len = 0; len < 10; len++) {
-  let combos = combinations(len)
-
-  for (let i = 0; i < combos.length; i++) {
-    let combo = combos[i]
-
+  for (let combo of combinations(len)) {
     if (combo.reduce((result, move) => result ^ masks[move], board) == 0) {
       console.log(combo.join(""))
       process.exit 

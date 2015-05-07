@@ -1,26 +1,20 @@
 namespace :ES6 do
   task :clean do
     path = File.dirname(__FILE__)
-    `cd #{path}; rm -f lights_out`
+    `cd #{path}; rm -rf lights_out node_modules`
   end
 
   task :check do
     `which node`
 
     unless $?.success?
-      raise "node not installed, please run `node install ghc`"
-    end
-
-    `which babel`
-
-    unless $?.success?
-      raise "node not installed, please run `npm install babel`"
+      raise "node not installed, please run `brew install node`"
     end
   end
 
   task :build => :check do
     path = File.dirname(__FILE__)
-    `cd #{path}; babel lights_out.es6 > lights_out; chmod 755 lights_out`
+    `cd #{path}; npm install babel; node_modules/.bin/babel lights_out.es6 > lights_out; chmod 755 lights_out`
   end
 end
 
