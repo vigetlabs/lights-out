@@ -1,0 +1,27 @@
+namespace :ES6 do
+  task :clean do
+    path = File.dirname(__FILE__)
+    `cd #{path}; rm -f lights_out`
+  end
+
+  task :check do
+    `which node`
+
+    unless $?.success?
+      raise "node not installed, please run `node install ghc`"
+    end
+
+    `which babel`
+
+    unless $?.success?
+      raise "node not installed, please run `npm install babel`"
+    end
+  end
+
+  task :build => :check do
+    path = File.dirname(__FILE__)
+    `cd #{path}; babel lights_out.es6 > lights_out; chmod 755 lights_out`
+  end
+end
+
+task :default => 'ES6:build'
