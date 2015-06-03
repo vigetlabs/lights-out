@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+
+def clean_up(str)
+  result = ""
+
+  str.chars.each do |char|
+    if result.include?(char)
+      result.delete!(char)
+    else
+      result << char
+    end
+  end
+
+  result.chars.sort.join
+end
+
+# sequences to flip specific locations
+single_solutions = {
+  1 => "13678",
+  2 => "5789",
+  3 => "13489",
+  4 => "3569",
+  5 => "24568",
+  6 => "1457",
+  7 => "12679",
+  8 => "1235",
+  9 => "92347"
+}
+
+@states = ARGV.last
+@moves  = ""
+
+@states.chars.each_with_index do |value, index|
+  position = index + 1
+
+  if value == "1"
+    @moves << single_solutions[position]
+  end
+end
+
+puts clean_up(@moves)
