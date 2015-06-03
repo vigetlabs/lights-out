@@ -1,4 +1,4 @@
-namespace :Ruby do
+namespace :Ruby2 do
   task :check do
     `which ruby`
     raise "No Ruby interpreter found" unless $?.success?
